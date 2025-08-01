@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripify - Cadastro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #00031a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: rgb(50, 240, 164);
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .register-title {
+            font-size: 25px;
+            color: white;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .register-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .register-box {
+            background-color: #00031a;
+            border: 2px solid rgb(91, 90, 90);
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .register-box h2 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .register-box p {
+            color: #2a2b31;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        
+        .register-btn {
+            background-color: rgb(50, 240, 164);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .register-btn:hover {
+            background-color: #45a049;
+        }
+        
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .footer-links {
+            margin-top: 10px;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">TRIPIFY </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="logo">TRIPIFY.</div>
+    
+    <div class="register-title">Cadastre-se</div>
+    
+    <div class="register-container">
+        <div class="register-box">
+            <h2>Cadastro de Empresa</h2>
+            <p>Registra-se como empresa de excursões</p>
+            <button class="register-btn">CADASTRAR</button>
+        </div>
+        
+        <div class="register-box">
+            <h2>Cadastro de Usuario</h2>
+            <p>Registra-se para participar de excursões</p>
+            <button class="register-btn">CADASTRAR</button>
+        </div>
+    </div>
+    
+    <footer>
+        <div>© Final Goal. All Right Reserved.</div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+    </footer>
+</body>
+</html>

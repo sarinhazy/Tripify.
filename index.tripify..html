@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulário de Excursão</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="form-container">
+    <form id="excursionForm">
+      <label for="titulo">Título da Excursão:</label>
+      <input type="text" id="titulo" placeholder="Ex: Trilha na Serra da Canastra" />
+
+      <label for="descricao">Descrição:</label>
+      <input type="text" id="descricao" placeholder="Ex: Excursão com guias especializados" />
+
+      <label for="local">Local:</label>
+      <input type="text" id="local" placeholder="Serra da Canastra, MG" />
+
+      <label for="data">Data da Excursão:</label>
+      <input type="date" id="data" />
+
+      <label for="inicio">Horário de Início:</label>
+      <input type="time" id="inicio" />
+
+      <label for="termino">Horário de Término:</label>
+      <input type="time" id="termino" />
+
+      <button type="button" onclick="adicionarAoGoogleCalendar()">
+        Adicionar ao Google Calendar
+      </button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
