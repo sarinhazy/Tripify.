@@ -24,8 +24,8 @@ Estamos constantemente melhorando o Tripify. Fique à vontade para acompanhar, s
 Participantes do grupo: 
 
 *Ana Luisa Nogueira - 22300589
-*Bernardo Augusto - 
-*João Henrique Pimenta - 
+*Bernardo Augusto -22300465 
+*João Henrique Pimenta - 22300937
 *Lucas Oliveira - 22300406
 *Otávio Augusto - 22300309 
 *Sarah Oliveira Figueiredo - 22300848
