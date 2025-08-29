@@ -341,5 +341,44 @@
             <p>Privacy Policy, Terms & Condition*</p>
         </div>
     </footer>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const ratingLabel = document.getElementById('ratingLabel');
+        let currentRating = 0;
+
+        const labels = ["Ruim", "Regular", "Bom", "Muito Bom", "Excelente"];
+
+        stars.forEach((star, index) => {
+            // Hover para mostrar estrelas temporariamente
+            star.addEventListener('mouseover', () => {
+                highlightStars(index);
+            });
+
+            // Remover destaque se não clicado
+            star.addEventListener('mouseout', () => {
+                highlightStars(currentRating - 1);
+            });
+
+            // Clique para selecionar avaliação
+            star.addEventListener('click', () => {
+                currentRating = index + 1;
+                ratingLabel.textContent = labels[index];
+                highlightStars(index);
+                console.log("Avaliação enviada:", currentRating, "estrela(s)");
+            });
+        });
+
+        function highlightStars(index) {
+            stars.forEach((s, i) => {
+                if (i <= index) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>
