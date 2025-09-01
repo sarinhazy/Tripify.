@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripify - Avaliação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #00031a;
+            color: white;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #00031a;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color:rgb(50, 240, 164);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #00031a;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgb(50, 240, 164);
+        }
+        
+        .experience-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .experience-header h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .experience-header p {
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .rating-section {
+            margin-bottom: 30px;
+        }
+        
+        .rating-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .stars {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .star {
+            font-size: 30px;
+            color: #ddd;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: color 0.2s;
+        }
+        
+        .star:hover, .star.active {
+            color: #ffcc00;
+        }
+        
+        .rating-label {
+            text-align: center;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .liked-section {
+            margin-bottom: 30px;
+        }
+        
+        .liked-title {
+            margin-bottom: 15px;
+        }
+        
+        .liked-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .liked-item {
+            background-color: #00073c;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #ff6b6b;
+        }
+        
+        .comment-section {
+            margin-bottom: 40px;
+        }
+        
+        .comment-title {
+            margin-bottom: 15px;
+            margin-left: 60px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 15px;
+            background-color:#00031a;
+        }
+        
+        .nps-section {
+            margin-bottom: 30px;
+        }
+        
+        .nps-title {
+            margin-bottom: 15px;
+        }
+        
+        .nps-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .nps-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #00073c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 30px;
+        }
+        
+        .nps-number:hover, .nps-number.active {
+            background-color: #ff6b6b;
+            color: white;
+        }
+        
+        .nps-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: rgb(50, 240, 164);;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .submit-btn:hover {
+            background-color: rgb(50, 240, 164);
+        }
+        
+        footer {
+            background-color: #00031a;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: rgb(50, 240, 164);
+        }
+        
+        .footer-logo span {
+            color: #ff6b6b;
+        }
+        
+        .footer-slogan {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        
+        .footer-links {
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #444;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">TRIPIFY </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1>AVALIE SUA EXPERIÊNCIA</h1>
+        
+        <div class="experience-header">
+            <h2>Trilha em inhotim</h2>
+            <p>Sabado, 12/04, 15:00</p>
+        </div>
+        
+        <div class="rating-section">
+            <div class="rating-title">
+                <p>O que você achou do passeio?</p>
+                <p>Escolha de 1 a 5 estrelas para classificar:</p>
+            </div>
+            
+            <div class="stars">
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+            </div>
+            
+            <p class="rating-label">Excelente</p>
+        </div>
+        
+        <div class="liked-section">
+            <h3 class="liked-title">Do que você gostou?</h3>
+            
+            <div class="liked-items">
+                <div class="liked-item">Equipe simpática e muito prestativa!</div>
+                <div class="liked-item">Hospedagem confortável e bem localizada</div>
+                <div class="liked-item">Paradas bem planejadas</div>
+                <div class="liked-item">Transporte pontual e bem estruturado</div>
+                <div class="liked-item">Ônibus confortável e limpo</div>
+                <div class="liked-item">Ótimo custo-benefício!</div>
+                <div class="liked-item">Roteiro organizado e sem atrasos</div>
+            </div>
+        </div>
+        
+        <div class="comment-section">
+            <h1 class="comment-title">Deixar comentário</h1>
+            <textarea placeholder="Conte-nos o que aconteceu (opcional)"></textarea>
+            <p>Seu comentario ajuda muitos viajantes!</p>
+        </div>
+        
+        <div class="nps-section">
+            <h3 class="nps-title">Avalie a Tripify também</h3>
+            <p>Em uma escala de 0 a 10, qual é a chance de você indicar a Tripify para um amigo?</p>
+            
+            <div class="nps-scale">
+                <div class="nps-number">0</div>
+                <div class="nps-number">1</div>
+                <div class="nps-number">2</div>
+                <div class="nps-number">3</div>
+                <div class="nps-number">4</div>
+                <div class="nps-number">5</div>
+                <div class="nps-number">6</div>
+                <div class="nps-number">7</div>
+                <div class="nps-number">8</div>
+                <div class="nps-number">9</div>
+                <div class="nps-number">10</div>
+            </div>
+            
+            <div class="nps-labels">
+                <span>Nada provável</span>
+                <span>Muito provável</span>
+            </div>
+        </div>
+        
+        <button class="submit-btn">ENVIAR AVALIAÇÃO</button>
+    </div>
+    
+    <footer>
+        <div class="footer-logo"> TRIPIFY.</div>
+        <div class="footer-slogan">Conectando pessoas a experiências inesquecíveis.<br>Planeje, crie e viva excursões com mais praticidade, segurança e emoção.</div>
+        
+        <hr>
+        
+        <div class="footer-links">
+            <p>© Final Goal. All Right Reserved.</p>
+            <p>Privacy Policy, Terms & Condition*</p>
+        </div>
+    </footer>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const ratingLabel = document.getElementById('ratingLabel');
+        let currentRating = 0;
+
+        const labels = ["Ruim", "Regular", "Bom", "Muito Bom", "Excelente"];
+
+        stars.forEach((star, index) => {
+            // Hover para mostrar estrelas temporariamente
+            star.addEventListener('mouseover', () => {
+                highlightStars(index);
+            });
+
+            // Remover destaque se não clicado
+            star.addEventListener('mouseout', () => {
+                highlightStars(currentRating - 1);
+            });
+
+            // Clique para selecionar avaliação
+            star.addEventListener('click', () => {
+                currentRating = index + 1;
+                ratingLabel.textContent = labels[index];
+                highlightStars(index);
+                console.log("Avaliação enviada:", currentRating, "estrela(s)");
+            });
+        });
+
+        function highlightStars(index) {
+            stars.forEach((s, i) => {
+                if (i <= index) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
