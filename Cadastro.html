@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tripify - Viagens</title>
+  <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">🌍 Tripify</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="Gerenciar.html">Gerenciar Excursão</a></li>
+        <li><a href="Avaliações">Avaliação</a></li>
+        <li><a href="Sobre.html">Sobre Nós</a></li>
+        <li><a href="HomeCliente.html">Viagens</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1 data-i18n="heroTitle">Descubra as Melhores <span>Experiências de Viagem</span></h1>
+      <p data-i18n="heroSubtitle">Do descanso em praias paradisíacas à aventura em cidades históricas — Tripify conecta você às melhores opções de viagem.</p>
+      <button id="explore-btn" data-i18n="exploreBtn">🌟 Explorar Viagens</button>
+   
+    </div>
+  </section>
+
+  <!-- Cadastro Section -->
+  <section class="cadastro">
+    <h2 data-i18n="registerTitle">Cadastre-se</h2>
+    <p data-i18n="registerSubtitle">Escolha a opção que melhor se aplica a você:</p>
+
+    <div class="cadastro-container">
+      <!-- Cliente -->
+      <div class="card">
+        <h3 data-i18n="clientTitle">Sou Cliente</h3>
+        <form id="form-cliente">
+  <input type="text" placeholder="Nome" required>
+  <input type="email" placeholder="Email" required>
+  <input type="password" placeholder="Senha" required>
+  <button type="submit" data-i18n="registerBtn">Cadastrar</button>
+  <span class="form-message" id="clienteMessage"></span>
+</form>
+      </div>
+
+      <!-- Empresa -->
+      <div class="card">
+        <h3 data-i18n="companyTitle">Sou Empresa</h3>
+        <form id="form-empresa">
+  <input type="text" placeholder="Nome da Empresa" required>
+  <input type="text" placeholder="CNPJ" required>
+  <input type="email" placeholder="Email" required>
+  <button type="submit" data-i18n="registerBtn">Cadastrar</button>
+  <span class="form-message" id="empresaMessage"></span>
+</form>
+      </div>
+    </div>
+    <script>
+
+  const clienteMessage = document.getElementById('clienteMessage');
+  const empresaMessage = document.getElementById('empresaMessage');
+
+  // Função para simular erro de cadastro (50% de chance de sucesso)
+  function simulateCadastro() {
+    const random = Math.random();
+    if(random < 0.5) return { success: true };
+    else if(random < 0.75) return { success: false, error: "Usuário já cadastrado" };
+    else return { success: false, error: "Não foi possível realizar seu cadastro" };
+  }
+
+  // Cadastro Cliente
+  clienteForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const result = simulateCadastro();
+    if(result.success) {
+      clienteMessage.textContent = "";
+      alert("✅ Cadastro concluído com sucesso!");
+      window.location.href = "HomeCliente.html";
+    } else {
+      clienteMessage.textContent = "❌ " + result.error;
+      clienteMessage.style.color = "red";
+    }
+  });
+
+  // Cadastro Empresa
+  empresaForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const result = simulateCadastro();
+    if(result.success) {
+      empresaMessage.textContent = "";
+      alert("✅ Cadastro concluído com sucesso!");
+      window.location.href = "HomeEmpresa.html";
+    } else {
+      empresaMessage.textContent = "❌ " + result.error;
+      empresaMessage.style.color = "red";
+    }
+  });
+</script>
+  </section>
+
+  <script>
+    
+     // Seleciona os formulários
+  const clienteForm = document.getElementById('form-cliente');
+  const empresaForm = document.getElementById('form-empresa');
+
+  // Cadastro Cliente
+  clienteForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("✅ Cadastro concluído com sucesso!");
+    window.location.href = "HomeCliente.html"; // Redireciona para home cliente
+  });
+
+  // Cadastro Empresa
+  empresaForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("✅ Cadastro concluído com sucesso!");
+    window.location.href = "HomeEmpresa.html"; // Redireciona para home empresa
+  });
+  
+
+    
+  </script>
+  <!-- Selector de idioma -->
+<footer class="footer">
+  <label for="lang-select" data-i18n="languageLabel">Idioma:</label>
+  <select id="lang-select">
+    <option value="pt">Português 🇧🇷</option>
+    <option value="en">English 🇺🇸</option>
+    <option value="es">Español 🇪🇸</option>
+  </select>
+</footer>
+
+
+  <script src="Cadastro.js"></script>
+</body>
+</html>
