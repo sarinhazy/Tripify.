@@ -30,6 +30,8 @@ RF01 – O sistema deve permitir o cadastro de usuários.
 
 RF02 – O usuário deve poder criar e gerenciar excursões.
 
+RF03 – Deve haver um sistema de divisão de custos automático.
+
 RF05 – O sistema deve permitir cancelamento de excursões.
 
 RF06 – O sistema deve permitir integração com calendário.
@@ -38,7 +40,13 @@ RF07 – Deve haver um sistema de recomendações de excursões.
 
 RF08 – O sistema deve oferecer suporte a múltiplos idiomas.
 
+RF09 - O aplicativo deve enviar lembretes próximo a data. 
+
+RF10 - O aplicativo deve permitir avaliações das excursões. 
+
 RF12 – Deve haver um sistema de busca para encontrar excursões próximas.
+
+RF13 – Interface intuitiva. 
 
 RF14 – Deve ser possível verificar a disponibilidade de vagas em cada excursão.
 
@@ -46,10 +54,27 @@ RF16 – O sistema deve oferecer diferentes categorias de excursões (aventura, 
 
 RF17 – Deve ser possível visualizar a previsão do tempo para a data e local da excursão.
 
+RF18 – O sistema deve permitir a filtragem de excursões por preço, duração e 
+distância.
+
+RF19 - O sistema deve permitir que os usuários criem listas de desejos com 
+excursões favoritas e sejam avisados quando tiverem outras com o 
+mesmo destino. 
+
+RF20 - O sistema deve permitir que os usuários convidem amigos para 
+excursões via link compartilhável
+
 ⚠️ Observações
 
 Mesmo com todas as melhorias, o Tripify ainda enfrenta alguns possíveis bugs que serão ajustados ao longo do desenvolvimento para que o sistema alcance sua melhor performance.
 
+⚠️ Observações 0.1 
+
+A interface do sistema Tripify ainda está passando por algumas melhorias para o melhor conforto do usuário.
+
+⚠️ Observações 0.2 
+
+O sistema Tripify ainda continua passando por alguns problemas de traduções automáticas e pagamentos online.
 
 Participantes do grupo: 
 
