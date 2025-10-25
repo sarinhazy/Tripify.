@@ -44,6 +44,15 @@ RF09 - O aplicativo deve enviar lembretes próximo a data.
 
 RF10 - O aplicativo deve permitir avaliações das excursões. 
 
+
+Tripify– Atualizações 🚀 22/10/2025
+
+✅ Requisitos Implementados
+
+RF09 - O aplicativo deve enviar lembretes próximo a data. 
+
+RF10 - O aplicativo deve permitir avaliações das excursões. 
+
 RF12 – Deve haver um sistema de busca para encontrar excursões próximas.
 
 RF13 – Interface intuitiva. 
