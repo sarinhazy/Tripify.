@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="./Pagina_Cadastro/style.css">
+  <script src="https://kit.fontawesome.com/cf6fa412bd.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+
+  <header>
+    <div id="mainCoantiner">
+      <div class="main-header">
+        <div class="header-social">
+          <ul>
+            <li><a href="./index.html" id="nmberone"><i class="fa-solid fa-house" style="color: #ffffff;"></i></a></li>
+            <li><a href="./Login.html" id="nmberone"><i class="fa-solid fa-circle-user" style="color: #ffffff;"></i></a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <!--Bolinhas legais-->
+
+  <div>
+    <div class="starsec"></div>
+    <div class="starthird"></div>
+    <div class="starfourth"></div>
+    <div class="starfifth"></div>
+  </div>
+
+  <!--Check box para alterar atleta/emrpesario-->
+
+  <div class="container">
+    <div class="buttonsForm">
+      <div class="btnColor"></div>
+      <button id="btnSignin">Pessoa Fisica</button>
+      <button id="btnSignup">Empresa/Agencia</button>
+    </div>
+
+
+    <form id="signin" method="post" action="php/cadastro.php">
+
+      <input type="email" name="emailAtleta" placeholder="Email" required />
+      <i class="fas fa-envelope iEmail" style="color: #fff;"></i>
+
+      <input type="date" name="datanasc" placeholder="Data de Nascimento" required />
+      <i class="fa-solid fa-calendar-days" style="color: #fff;"></i>
+
+      <input type="text" name="esportesAtuacao" placeholder="Intesseres" required />
+      <i class="fa-solid fa-user" style="color: #fff;"></i>
+
+      <input type="tel" name="telefoneAtleta" placeholder="Telefone" required />
+      <i class="fa-solid fa-phone" style="color: #fff;"></i>
+
+      <input type="password" name="senha" placeholder="Senha" required />
+      <i class="fas fa-lock iPassword" style="color: #fff;"></i>
+
+      <input type="password" name="senhaconf" placeholder="Confirmar Senha" required />
+      <i class="fas fa-lock iPassword2" style="color: #fff;"></i>
+
+
+      <button type="submit" class="btn41-43 btn-41" name="enviar" value="Cadastrar">Cadastrar</button>
+    </form>
+
+
+    <!--Forms do Empresario-->
+
+    <form id="signup" method="post" action="php/Empresario.php">
+
+      <input type="email" name="emailEmpresa" placeholder="Email Comercial" required />
+      <i class="fa-solid fa-user" style="color: #fff;"></i>
+
+      <input type="text" name="empresa" placeholder="Nome da Empresa" required />
+      <i class="fas fa-envelope iEmail" style="color: #fff;"></i>
+
+      <input type="number" name="cnpj" placeholder="CNPJ" required autocomplete="off" />
+      <i class="fa-solid fa-phone" style="color: #fff;"></i>
+
+      <input type="tel" name="telefoneComercial" placeholder="Telefone Empresarial" required />
+      <i class="fa-solid fa-building" style="color: #fff;"></i>
+
+      <input type="password" name="senha" placeholder="Senha" required />
+      <i class="fas fa-lock iPassword" style="color: #fff;"></i>
+
+      <input type="password" name="senhaEmpresario" placeholder="Confirmar Senha" required />
+      <i class="fas fa-lock iPassword2" style="color: #fff;"></i>
+
+      <button type="submit" name="enviar-empresario" value="Cadastrar">Cadastrar</button>
+    </form>
+  </div>
+
+
+  <script src="./Pagina_Cadastro/index.js"></script>
+</body>
+
+</html>

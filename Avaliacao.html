@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripify - Avaliação</title>
+      <link rel="stylesheet" href="avaliacao.css">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">TRIPIFY </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="HomeCliente.html">Serviços</a></li>
+                <li><a href="Contato.html">Sobre nós</a></li>
+                <li><a href="Contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1>AVALIE SUA EXPERIÊNCIA</h1>
+        
+        <div class="experience-header">
+            <select id="excursion-select" style="background-color: #00073c; color: white; padding: 10px; border-radius: 5px; margin-bottom: 15px; width: 100%; border: 1px solid #444;">
+                <option value="">Selecione uma excursão para avaliar</option>
+            </select>
+            <div id="excursion-details" style="display: none;">
+                <h2 id="excursion-name"></h2>
+                <p id="excursion-date"></p>
+            </div>
+        </div>
+        
+        <div class="rating-section">
+            <div class="rating-title">
+                <p>O que você achou do passeio?</p>
+                <p>Escolha de 1 a 5 estrelas para classificar:</p>
+            </div>
+            
+            <div class="stars">
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+            </div>
+            
+            <p class="rating-label">Excelente</p>
+        </div>
+        
+        <div class="liked-section">
+            <h3 class="liked-title">Do que você gostou?</h3>
+            
+            <div class="liked-items">
+                <div class="liked-item">Equipe simpática e muito prestativa!</div>
+                <div class="liked-item">Hospedagem confortável e bem localizada</div>
+                <div class="liked-item">Paradas bem planejadas</div>
+                <div class="liked-item">Transporte pontual e bem estruturado</div>
+                <div class="liked-item">Ônibus confortável e limpo</div>
+                <div class="liked-item">Ótimo custo-benefício!</div>
+                <div class="liked-item">Roteiro organizado e sem atrasos</div>
+            </div>
+        </div>
+        
+        <div class="comment-section">
+            <h1 class="comment-title">Deixar comentário</h1>
+            <textarea placeholder="Conte-nos o que aconteceu (opcional)"></textarea>
+            <p>Seu comentario ajuda muitos viajantes!</p>
+        </div>
+        
+        <div class="nps-section">
+            <h3 class="nps-title">Avalie a Tripify também</h3>
+            <p>Em uma escala de 0 a 10, qual é a chance de você indicar a Tripify para um amigo?</p>
+            
+            <div class="nps-scale">
+                <div class="nps-number">0</div>
+                <div class="nps-number">1</div>
+                <div class="nps-number">2</div>
+                <div class="nps-number">3</div>
+                <div class="nps-number">4</div>
+                <div class="nps-number">5</div>
+                <div class="nps-number">6</div>
+                <div class="nps-number">7</div>
+                <div class="nps-number">8</div>
+                <div class="nps-number">9</div>
+                <div class="nps-number">10</div>
+            </div>
+            
+            <div class="nps-labels">
+                <span>Nada provável</span>
+                <span>Muito provável</span>
+            </div>
+        </div>
+        
+        <button class="submit-btn" onclick="submitRating()">ENVIAR AVALIAÇÃO</button>
+    </div>
+    
+    <footer>
+        <div class="footer-logo"> TRIPIFY.</div>
+        <div class="footer-slogan">Conectando pessoas a experiências inesquecíveis.<br>Planeje, crie e viva excursões com mais praticidade, segurança e emoção.</div>
+        
+        <hr>
+        
+        <div class="footer-links">
+            <p>© Final Goal. All Right Reserved.</p>
+            <p>Privacy Policy, Terms & Condition*</p>
+        </div>
+    </footer>
+
+    <script>
+        let excursions = JSON.parse(localStorage.getItem('tripify_excursions')) || [];
+        let currentRating = 0;
+        let selectedNPS = 0;
+        const labels = ["Ruim", "Regular", "Bom", "Muito Bom", "Excelente"];
+
+        // Carregar excursões passadas
+        function loadPastExcursions() {
+            const select = document.getElementById('excursion-select');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // Limpar opções existentes
+            select.innerHTML = '<option value="">Selecione uma excursão para avaliar</option>';
+            
+            const pastExcursions = excursions.filter(exc => {
+                const excDate = new Date(exc.date);
+                excDate.setHours(0, 0, 0, 0);
+                return excDate < today;
+            });
+            
+            if (pastExcursions.length === 0) {
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = 'Nenhuma excursão passada encontrada';
+                option.disabled = true;
+                select.appendChild(option);
+                return;
+            }
+            
+            pastExcursions.forEach((excursion, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                const dateStr = new Date(excursion.date).toLocaleDateString('pt-BR');
+                const ratingStr = excursion.rating ? ` (Avaliada: ${excursion.rating}★)` : '';
+                option.textContent = `${excursion.name} - ${dateStr}${ratingStr}`;
+                select.appendChild(option);
+            });
+        }
+
+        // Mostrar detalhes da excursão selecionada
+        document.getElementById('excursion-select').addEventListener('change', function() {
+            const index = this.value;
+            const details = document.getElementById('excursion-details');
+            
+            // Reset form quando trocar de excursão
+            currentRating = 0;
+            selectedNPS = 0;
+            document.querySelector('textarea').value = '';
+            highlightStars(-1);
+            document.querySelectorAll('.nps-number').forEach(n => n.classList.remove('active'));
+            document.querySelector('.rating-label').textContent = 'Excelente';
+            
+            if (index !== '') {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const pastExcursions = excursions.filter(exc => {
+                    const excDate = new Date(exc.date);
+                    excDate.setHours(0, 0, 0, 0);
+                    return excDate < today;
+                });
+                const excursion = pastExcursions[index];
+                
+                if (excursion) {
+                    document.getElementById('excursion-name').textContent = excursion.name;
+                    document.getElementById('excursion-date').textContent = new Date(excursion.date).toLocaleDateString('pt-BR', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    
+                    // Carregar avaliação existente se houver
+                    if (excursion.rating) {
+                        currentRating = excursion.rating;
+                        highlightStars(currentRating - 1);
+                        document.querySelector('.rating-label').textContent = labels[currentRating - 1];
+                    }
+                    if (excursion.nps) {
+                        selectedNPS = excursion.nps;
+                        document.querySelector(`[data-nps="${selectedNPS}"]`)?.classList.add('active');
+                    }
+                    if (excursion.comment) {
+                        document.querySelector('textarea').value = excursion.comment;
+                    }
+                    
+                    details.style.display = 'block';
+                } else {
+                    details.style.display = 'none';
+                }
+            } else {
+                details.style.display = 'none';
+            }
+        });
+
+        // Sistema de estrelas
+        const stars = document.querySelectorAll('.star');
+        stars.forEach((star, index) => {
+            star.addEventListener('mouseover', () => highlightStars(index));
+            star.addEventListener('mouseout', () => highlightStars(currentRating - 1));
+            star.addEventListener('click', () => {
+                currentRating = index + 1;
+                document.querySelector('.rating-label').textContent = labels[index];
+                highlightStars(index);
+            });
+        });
+
+        function highlightStars(index) {
+            stars.forEach((s, i) => {
+                s.classList.toggle('active', i <= index);
+            });
+        }
+
+        // Sistema NPS
+        document.querySelectorAll('.nps-number').forEach(number => {
+            number.setAttribute('data-nps', number.textContent);
+            number.addEventListener('click', function() {
+                document.querySelectorAll('.nps-number').forEach(n => n.classList.remove('active'));
+                this.classList.add('active');
+                selectedNPS = parseInt(this.textContent);
+            });
+        });
+
+        // Enviar avaliação
+        function submitRating() {
+            const selectIndex = document.getElementById('excursion-select').value;
+            if (selectIndex === '') {
+                alert('Selecione uma excursão para avaliar');
+                return;
+            }
+            
+            if (currentRating === 0) {
+                alert('Por favor, selecione uma avaliação com estrelas');
+                return;
+            }
+
+            const today = new Date();
+            const pastExcursions = excursions.filter(exc => new Date(exc.date) < today);
+            const selectedExcursion = pastExcursions[selectIndex];
+            
+            if (!selectedExcursion) {
+                alert('Excursão não encontrada');
+                return;
+            }
+            
+            // Encontrar a excursão original no array
+            const originalIndex = excursions.findIndex(exc => exc.id === selectedExcursion.id);
+            
+            if (originalIndex !== -1) {
+                excursions[originalIndex].rating = currentRating;
+                excursions[originalIndex].nps = selectedNPS;
+                excursions[originalIndex].comment = document.querySelector('textarea').value.trim();
+                excursions[originalIndex].evaluatedAt = new Date().toISOString();
+                
+                localStorage.setItem('tripify_excursions', JSON.stringify(excursions));
+                alert('Avaliação enviada com sucesso!');
+                
+                // Reset form
+                resetForm();
+            } else {
+                alert('Erro ao salvar avaliação');
+            }
+        }
+        
+        function resetForm() {
+            currentRating = 0;
+            selectedNPS = 0;
+            document.querySelector('textarea').value = '';
+            document.getElementById('excursion-select').value = '';
+            document.getElementById('excursion-details').style.display = 'none';
+            highlightStars(-1);
+            document.querySelectorAll('.nps-number').forEach(n => n.classList.remove('active'));
+            document.querySelector('.rating-label').textContent = 'Excelente';
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPastExcursions();
+            
+            // Recarregar excursões a cada 30 segundos para sincronizar com o sistema principal
+            setInterval(function() {
+                const newExcursions = JSON.parse(localStorage.getItem('tripify_excursions')) || [];
+                if (JSON.stringify(newExcursions) !== JSON.stringify(excursions)) {
+                    excursions = newExcursions;
+                    loadPastExcursions();
+                }
+            }, 30000);
+            
+            // Listener para storage changes (quando outra aba modifica os dados)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'tripify_excursions') {
+                    excursions = JSON.parse(e.newValue) || [];
+                    loadPastExcursions();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

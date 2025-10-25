@@ -1,0 +1,267 @@
+/* ======= RESET ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ======= BODY ======= */
+body {
+  background-color: #181828;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* ======= HEADER / NAVBAR ======= */
+.main-header {
+  top: 0;
+  left: 0;
+  z-index: 20;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  background: rgba(28, 31, 47, 0.16);
+  overflow: hidden;
+  border: 1px solid #2e344d;
+  box-shadow: 10px 10px 36px rgba(0,0,0,0.5), -13px -13px 23px rgba(255,255,255,0.03);
+  border-width: 1px 0 0 1px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #f3572a;
+}
+
+/* ======= HERO SECTION ======= */
+.hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: url('hero-bg.jpg') center/cover no-repeat;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(28,31,47,0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero-content h1 span {
+  color: #f3572a;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+#explore-btn {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  background-color: #1c1f2f;
+  color: #f3572a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 26px rgba(0,0,0,0.5);
+}
+
+#explore-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 9px 16px rgba(0,0,0,0.4), -3px -3px 10px rgba(255,255,255,0.06);
+}
+
+/* ======= CADASTRO SECTION ======= */
+.cadastro {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #141421;
+  border: 1px solid #2e2e4c;
+  border-radius: 10px;
+}
+
+.cadastro h2, .cadastro p {
+  color: #fff;
+}
+
+.cadastro-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  border-radius: 30px;
+  background-color: #f3572a;
+  padding: 25px;
+  width: 300px;
+  transition: transform 0.3s ease;
+  box-shadow: 3px 9px 16px rgba(0,0,0,0.4), -3px -3px 10px rgba(255,255,255,0.06);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #fff;
+}
+
+.card input, .textbox-dg {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #2e344d;
+  background: rgba(28,31,47,0.16);
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.card button, .logn-btn {
+  background: #1c1f2f;
+  color: #f3572a;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #2e344d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card button:hover, .logn-btn:hover {
+  border-radius: 50px;
+  box-shadow: 3px 9px 16px rgba(0,0,0,0.4), -3px -3px 10px rgba(255,255,255,0.06);
+}
+
+/* ======= VIAGENS POPULARES ======= */
+.viagens-populares {
+  padding: 60px 20px;
+  text-align: center;
+  background: #181828;
+}
+
+.viagens-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.viagem-card {
+  background-color: #1c1f2f;
+  border-radius: 30px;
+  width: 250px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 3px 9px 16px rgba(0,0,0,0.4), -3px -3px 10px rgba(255,255,255,0.06);
+}
+
+.viagem-card:hover {
+  transform: translateY(-5px);
+}
+
+.viagem-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.viagem-card h3 {
+  color: #f3572a;
+}
+
+.viagem-card p {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* ======= STARS ANIMATION ======= */
+.starsec, .starthird, .starfourth, .starfifth {
+  content: " ";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  animation: animStar 150s linear infinite;
+}
+
+@keyframes animStar {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-2000px); }
+}
+
+/* ======= RESPONSIVIDADE ======= */
+@media (max-width: 900px) {
+  .cadastro-container, .viagens-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}

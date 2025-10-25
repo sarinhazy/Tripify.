@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tripify - Viagens</title>
+  <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">🌍 Tripify</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="Avaliacao.html">Avaliação</a></li>
+        <li><a href="Contato.html">Sobre Nós</a></li>
+        <li><a href="HomeCliente.html">Viagens</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1 data-i18n="heroTitle">Descubra as Melhores <span>Experiências de Viagem</span></h1>
+      <p data-i18n="heroSubtitle">Do descanso em praias paradisíacas à aventura em cidades históricas — Tripify conecta você às melhores opções de viagem.</p>
+      <button id="explore-btn" data-i18n="exploreBtn">🌟 Explorar Viagens</button>
+   
+    </div>
+  </section>
+
+  <!-- Cadastro Section -->
+  <section class="cadastro">
+    <h2 data-i18n="registerTitle">Cadastre-se</h2>
+    <p data-i18n="registerSubtitle">Escolha a opção que melhor se aplica a você:</p>
+
+   <div class="botoes-cadastro">
+  <button class="btn-tripify" onclick="abrirLogin()">Login</button>
+  <button class="btn-tripify" onclick="abrirCadastro()">Cadastro</button>
+</div>
+
+    <script>
+      
+
+  const clienteMessage = document.getElementById('clienteMessage');
+  const empresaMessage = document.getElementById('empresaMessage');
+
+  // Função para simular erro de cadastro (50% de chance de sucesso)
+  function simulateCadastro() {
+    const random = Math.random();
+    if(random < 0.5) return { success: true };
+    else if(random < 0.75) return { success: false, error: "Usuário já cadastrado" };
+    else return { success: false, error: "Não foi possível realizar seu cadastro" };
+  }
+
+  // Cadastro Cliente
+  clienteForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const result = simulateCadastro();
+    if(result.success) {
+      clienteMessage.textContent = "";
+      alert("✅ Cadastro concluído com sucesso!");
+      window.location.href = "HomeCliente.html";
+    } else {
+      clienteMessage.textContent = "❌ " + result.error;
+      clienteMessage.style.color = "red";
+    }
+  });
+
+  // Cadastro Empresa
+  empresaForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const result = simulateCadastro();
+    if(result.success) {
+      empresaMessage.textContent = "";
+      alert("✅ Cadastro concluído com sucesso!");
+      window.location.href = "HomeEmpresa.html";
+    } else {
+      empresaMessage.textContent = "❌ " + result.error;
+      empresaMessage.style.color = "red";
+    }
+
+    
+  });
+</script>
+  </section>
+
+  <script>
+    
+     // Seleciona os formulários
+  const clienteForm = document.getElementById('form-cliente');
+  const empresaForm = document.getElementById('form-empresa');
+
+  // Cadastro Cliente
+  clienteForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("✅ Cadastro concluído com sucesso!");
+    window.location.href = "HomeCliente.html"; // Redireciona para home cliente
+  });
+
+  // Cadastro Empresa
+  empresaForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("✅ Cadastro concluído com sucesso!");
+    window.location.href = "HomeEmpresa.html"; // Redireciona para home empresa
+  });
+  
+
+    
+  </script>
+  <!-- Selector de idioma -->
+<footer class="footer">
+  <label for="lang-select" data-i18n="languageLabel">Idioma:</label>
+  <select id="lang-select">
+    <option value="pt">Português 🇧🇷</option>
+    <option value="en">English 🇺🇸</option>
+    <option value="es">Español 🇪🇸</option>
+  </select>
+</footer>
+
+<script src="window.js"></script>
+<script>
+  function abrirLogin() {
+    window.location.href = "login.html";
+  }
+
+  function abrirCadastro() {
+    window.location.href = "Cadastro.html";
+  }
+
+  function redirecionarEmail() {
+    window.location.href = "Contato.html";
+  }
+</script>
+
+<style>
+  .botoes-cadastro {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .btn-tripify {
+    position: relative;
+    background: linear-gradient(45deg, #ff7b00, #ff3c00);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 32px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+  }
+
+  .btn-tripify::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-30deg);
+    transition: 0.5s;
+    z-index: 0;
+  }
+
+  .btn-tripify:hover::before {
+    left: 100%;
+  }
+
+  .btn-tripify:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 85, 0, 0.4);
+  }
+</style>
+
+
+    
+  </script>
+
+
+  <script src="Cadastro.js"></script>
+</body>
+</html>
