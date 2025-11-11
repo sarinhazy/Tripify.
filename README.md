@@ -85,6 +85,22 @@ A interface do sistema Tripify ainda está passando por algumas melhorias para o
 
 O sistema Tripify ainda continua passando por alguns problemas de traduções automáticas e pagamentos online.
 
+
+Tripify– Atualizações 🚀 10/11/2025
+
+O sistema Tripify finalmente está de cara nova!! Esperamos que possam aproveitar nossa nova interface oficial. 
+
+⚠️ Observações
+
+Mesmo com todas as melhorias, o Tripify ainda enfrenta alguns possíveis bugs que serão ajustados ao longo do desenvolvimento para que o sistema alcance sua melhor performance.
+
+⚠️ Observações 0.1
+
+O sistema Tripify ainda continua passando por alguns problemas de traduções automáticas e pagamentos online.
+
+
+
+
 Participantes do grupo: 
 
 *Ana Luisa Nogueira - 22300589
